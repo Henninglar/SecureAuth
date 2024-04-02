@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>2FA Verification</title>
+    <style>
+        /* Custom style for narrowing the input field */
+        .narrow-input {
+            max-width: 200px; /* Adjust the width as needed */
+            margin: 0 auto; /* Center the input field */
+        }
+
+        /* Style for OAuth button */
+        #oauth-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: auto;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 16px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h2>Two-Factor Authentication required</h2>
+            <p>Enter OTP from your authenticator app:</p>
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="2fa_key">2FA Key:</label>
+                    <input type="number" class="form-control narrow-input" id="2fa_key" name="2fa_key" required="">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <!-- "Go Back" button -->
+            <a href="javascript:history.back()" class="btn btn-secondary mt-3">Go Back</a>
+        </div>
+    </div>
+
+    {% if session.get('message') %}
+      <div class="alert alert-{{ session.get('message_type', 'info') }}">
+        {{ session.pop('message') }}
+      </div>
+    {% endif %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

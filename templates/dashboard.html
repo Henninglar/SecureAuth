@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Flask Bootstrap Dashboard</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Welcome to Your Dashboard, {{current_user.name or current_user.username}}</h1>
+<p>There isn't a lot to do here yet :( </p>
+
+    <!-- Enable 2FA Button -->
+    <div class="row mt-3">
+        <div class="col-md-6">
+            {% if enable_2fa %}
+                <a href="{{ url_for('enable') }}" class="btn btn-success">Enable 2FA</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
